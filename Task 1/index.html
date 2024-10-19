@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Submission</title>
+    <style>
+      body {
+    font-family: 'Times New Roman', Times, serif , sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #d9b8fb;
+      }
+
+      h1 {
+          text-align: center;
+          margin-top: 50px;
+      }
+
+      form {
+          width: 50%;
+          margin: 0 auto;
+          padding: 20px;
+          background-color: #fff;
+          border-radius: 8px;
+          box-shadow: 0px 0px 10px rgba(225, 156, 156, 0.1);
+      }
+
+      
+
+      input[type="text"],
+      input[type="email"],
+      button {
+          width: 100%;
+          padding: 15px;
+          margin-bottom: 15px;
+          border: 2px solid #ccc;
+          border-radius: 3px;
+          box-sizing: border-box;
+      }
+
+      button {
+          background-color: hsl(232, 48%, 50%);
+          color: hsl(0, 0%, 0%);
+          border: none;
+          cursor: pointer;
+      }
+
+      button:hover {
+          background-color: rgb(130, 134, 232)
+      }
+    </style>
+</head>
+<body>
+    <h1>Form Submission for Appointment</h1>
+    <form action="/submit" method="POST">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name"><br>
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email"><br>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

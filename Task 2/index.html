@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration Form</title>
+  <script src="client.js" defer></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f2f2f2;
+    }
+
+    h1 {
+      color: #0056b3;
+      text-align: center;
+      margin-top: 20px;
+      font-size: 24px;
+    }
+
+    form {
+      max-width: 400px;
+      margin: 20px auto;
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 50px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    form label {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 16px;
+    }
+
+    form input[type="text"],
+    form input[type="email"],
+    form input[type="number"] {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 5px; /* Adjusted for spacing */
+      border: 1px solid #ccc;
+      border-radius: 7px;
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+
+    .error-message {
+      color: red;
+      font-size: 12px; /* Increased font size for better readability */
+      margin-top: 8px; /* Add some space above the error message */
+      margin-bottom: 8px;
+      display: none; /* Initially hidden */
+    }
+
+    button[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      background-color: navy;
+      border: none;
+      border-radius: 10px;
+      color: #fff;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #0056b3;
+      border-radius: 30px;
+      
+
+    }
+
+    @media (max-width: 480px) {
+      form {
+        width: 80%;
+      }
+
+      form label,
+      form input[type="text"],
+      form input[type="email"],
+      form input[type="number"],
+      button[type="submit"] {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Submit Your Details</h1>
+
+  <form id="studentForm" action="/submit" method="POST">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+    <div id="emailError" class="error-message">Please enter a valid email address.</div>
+
+    <label for="semester">Semester:</label>
+    <input type="number" id="semester" name="semester" min="1" max="8" required>
+    <div id="semesterError" class="error-message">Semester must be between 1 and 6.</div>
+
+    <label for="duration">Duration (months):</label>
+    <input type="number" id="duration" name="duration" min="1" max="12" required>
+    <div id="durationError" class="error-message">Duration must be between 1 and 6 months.</div>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    document.getElementById("studentForm").addEventListener("submit", function(event) {
+      const email = document.getElementById("email").value;
+      const semester = document.getElementById("semester").value;
+      const duration = document.getElementById("duration").value;
+      let isValid = true;
+
+      // Email validation
+      if (!email.includes("@")) {
+        document.getElementById("emailError").style.display = "block";
+        isValid = false;
+      } else {
+        document.getElementById("emailError").style.display = "none";
+      }
+
+      // Semester validation
+      if (semester < 1 || semester > 6) {
+        document.getElementById("semesterError").style.display = "block";
+        isValid = false;
+      } else {
+        document.getElementById("semesterError").style.display = "none";
+      }
+
+      // Duration validation
+      if (duration < 1 || duration > 6) {
+        document.getElementById("durationError").style.display = "block";
+        isValid = false;
+      } else {
+        document.getElementById("durationError").style.display = "none";
+      }
+
+      // Prevent form submission if validation fails
+      if (!isValid) {
+        event.preventDefault();
+      }
+    });
+  </script>
+  
+</body>
+</html>
